@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+        // const btn=<button>good job</button>;
+        // let name='harshita';
+        // let para=<p>my name is {name}</p>;
+        // let div=<div>
+        //     <p>cotton socks</p>
+        //     <p>Price:$10</p>
+        //     <button>Add to Cart</button>
+        //     </div>
+        const container=document.querySelector('.js-container');
+        // // ReactDOM.createRoot(container).render(btn);
+        // // ReactDOM.createRoot(container).render(para);
+        // // ReactDOM.createRoot(container).render(div);
+        //  let sock=10;
+        // let tShirt=8;
+        // let productCost=sock+2*tShirt;
+        // let shippingCost=5;
+        // let totalCost=productCost+shippingCost;
+        // let div2=<div>
+        // <p>Product Cost: ${productCost}</p>
+        // <p>Shipping Cost: ${shippingCost}</p>
+        // <p>Total Cost: ${totalCost}</p>
+        // <button>Place your order</button>
+        // </div>
+        // // ReactDOM.createRoot(container).render(div2);
+        let para3=<p>TOday is {dayjs().format('MMMM D')}</p>
+        let Root=ReactDOM.createRoot(container);
+        Root.render(para3);
+        setInterval(()=>{
+             let time=<p>Current Time :{dayjs().format('HH:mm:ss')}</p>
+            Root.render(time);
+         },1000);
+       
+       
+
+        
+    </script>
+    <script>
+        // let sock=10;
+        // let tShirt=8;
+        // let productCost=sock+2*tShirt;
+        // console.log(productCost);
+    </script>
+</body>
+</html>
