@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
+    <link rel="stylesheet" href="output.css">
 </head>
 <body>
-    <div class="js-container"></div>
+    <div class="js-container font-arial "></div>
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
     <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
@@ -40,17 +41,18 @@
                 setInputText('');
             }
             return (
-                <>
-                    <input 
+                <div className="my-5 mx-2 flex ">
+                    <input className="border-2 h-11 w-100 border-gray-400 rounded-xl px-4 py-3 text-lg flex-1"
                         placeholder="Send a message to Chatbot " 
                         size="30" 
                         onChange={saveInputText} 
                         value={inputText}
                     />
                     <button 
+                        className="text-white bg-blue-700 w-20 h-11 rounded-xl px-0.5 text-center mx-2  hover:cursor-pointer text-lg"
                         onClick={sendMesage}
-                    >send</button>
-                    </>
+                    >Send</button>
+                    </div>
             );
 
         }
@@ -77,18 +79,28 @@
             //         );
             //     }
             return(
-                <div> 
-               {sender==='robot' && <img src="rob.jpg" height="50" width="50" />}
+                <div className={(sender==='user')?' flex justify-end  mt-4':' flex justify-start mb-1.5 '}> 
+               {sender==='robot' && <img className="inline-block max-w-12 max-h-12" src="robot1.webp" />}
+               <div className="bg-gray-200 px-3.5 py-3 rounded-xl mx-1.5 max-w-80 ">
                 {message}
-                {sender=='user'&& <img src="user1.png" height="50" width="50" />}
+                </div>
+                {sender=='user'&& <img className="inline-block mr-3.5  max-w-12 max-h-12" src="user1.png" height="50" width="50" />}
                 
                 </div>
             );
         }
         function ChatMessages({chatMessages}){
-          
+            const chatMessagesRef=React.useRef(null);
+            React.useEffect(()=>{
+                const containerElem= chatMessagesRef.current;
+                if(containerElem){
+                    containerElem.scrollTop = containerElem.scrollHeight;
+                }
+            },[chatMessages]);
+           
         return ( 
-            <>
+            <div className="grow mt-5 overflow-scroll scrollbar-none scroll-auto" 
+            ref={chatMessagesRef}>
                 {chatMessages.map((chatMessage)=>{
                   return(
                 <ChatMessage 
@@ -98,7 +110,7 @@
                 />
                 );})
                 }
-            </>  
+            </div>  
         );
     }
       
@@ -129,16 +141,17 @@
             )
         
             return(                                                                                       
-            <>
-            <ChatInput 
+            <div className="max-w-xl mx-auto h-dvh flex flex-col ">
+            
+            <ChatMessages 
+            chatMessages={chatMessages}
+             />
+             <ChatInput 
             chatMessages={chatMessages}
             setChatMessage={setChatMessage}
             />
-            <ChatMessages
-            chatMessages={chatMessages}
-             />
             
-            </>
+            </div>
         );}
            
         const container=document.querySelector('.js-container');
