@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/day.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+    function App(){
+        const [count,setCount]=React.useState(0);
+        const countRef=React.useRef(null);
+        function updatecount(){
+            setCount(count+1);
+        }
+        function reset(){
+            setCount(0);
+        }
+         
+        function auto(){
+        setInterval(()=>{
+            const autoELM=countRef.current;
+            if(autoELM){
+                autoELM.click();
+            }
+        },2000);
+        }
+        //4f
+    //     const [time,setTime]=React.useState('');
+    //   dayjs().format('HH:mm:ss') ;
+    //    React.useEffect(()=>{
+    //         setInterval(()=>{
+    //             setTime(dayjs().format('HH:mm:ss')) ;
+    //         },1000)
+    //    },[]);
+    //4d
+        // const [isShowPassword,setShowPassword]=React.useState(true);
+        // function showPasswords(){
+        //     if(isShowPassword){
+        //         setShowPassword(false);
+        //     }
+        //     else{
+        //         setShowPassword(true);
+        //     }
+        // }
+        // 4c,4b
+        // const [isButtonOn,setIsButtonOn]= React.useState(true);
+        // function switchButtonOn(){
+        //     if(isButtonOn){
+        //         setIsButtonOn(false);
+        //     }
+        //     else{
+        //         setIsButtonOn(true);
+        //     }
+        // }
+        return(
+            <>
+            <div className="flex justify-center h-dvh items-center" >
+            <button className="border-2 m-5 p-3 bg-green-700 text-white  " onClick={updatecount} ref={countRef} >clicked {count} times</button>
+            <button className="border-2 m-5 p-3 bg-green-700 text-white" onClick={reset}>reset</button>
+            <button className="border-2 m-5 p-3 bg-green-700 text-white" onClick={auto}>auto click</button>
+            </div>
+           { /*
+             <p>current time: {time}</p>
+            <h1 
+                className=" font-arial text-2xl mx-2 my-6">
+                Hello ,Welcome to my Website</h1>
+            <input 
+                placeholder="Email" 
+                type="email" 
+                className="block mx-2 border-2 px-2 rounded-b-lg rounded-t-lg h-10 w-60  border-gray-400" />
+            <div>
+                <input 
+                    placeholder="Password" 
+                    type={`${isShowPassword ? 'password':'text'}`}
+                    className=" mx-2 border-2 border-gray-400 px-2 rounded-b-lg rounded-t-lg h-10 w-60  my-2.5 "/>
+                <button 
+                    className=""
+                    onClick={showPasswords}>
+                    {`${isShowPassword?'show':'hide'}`}
+                </button>
+            </div>
+            <button 
+                className=" inline-block mx-2 bg-blue-500 px-2  text-white rounded-b-lg rounded-t-lg h-10 w-20 my-2.5 mb-16 ">
+                Login
+            </button>
+            <button 
+                className=" bg-blue-500 px-2  text-white rounded-b-lg rounded-t-lg h-10 w-20 my-2.5 mb-16">
+                Sign up
+            </button>
+
+             <button className={`m-14 text-white py-4 px-5 rounded-xl ${isButtonOn ?' bg-green-700  ' :'bg-red-700'}`}
+                onClick={switchButtonOn}>
+                {isButtonOn?'On':'OFF'}
+                </button>*/}
+            </>
+        );
+    }
+     const container=document.querySelector('.js-container');
+        let Root=ReactDOM.createRoot(container);
+        Root.render(<App />);
+    </script>
+</body>
+</html>
