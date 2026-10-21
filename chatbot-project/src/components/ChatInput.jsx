@@ -9,6 +9,9 @@ export function ChatInput({chatMessages,setChatMessage}){
             function saveInputText(event){
              setInputText(event.target.value) ;
             }
+            function clearchat(){
+                  setChatMessage([]);
+            }
             function sendMesage(){
                 const newChat=[
                 ...chatMessages,
@@ -34,6 +37,7 @@ export function ChatInput({chatMessages,setChatMessage}){
                 ]);
                 setInputText('');
             }
+            
             return (
                 <div className="my-5 mx-2 flex ">
                     <input className="border-2 h-11 w-100 border-gray-400 rounded-xl px-4 py-3 text-lg flex-1"
@@ -46,6 +50,10 @@ export function ChatInput({chatMessages,setChatMessage}){
                         className="text-white bg-blue-700 w-20 h-11 rounded-xl px-0.5 text-center mx-2  hover:cursor-pointer text-lg"
                         onClick={sendMesage}
                     >Send</button>
+                    <button 
+                        className="text-black bg-gray-200 w-20 h-11 rounded-xl px-0.5 text-center mx-2  hover:cursor-pointer text-lg"
+                        onClick={clearchat}
+                    >Clear</button>
                     </div>
             );
         }

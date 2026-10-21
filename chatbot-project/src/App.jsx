@@ -10,14 +10,21 @@ function youtube(){
     );
 }
 function App(){ 
-            const [chatMessages,setChatMessage]= useState([]);
+            const [chatMessages,setChatMessage]= useState(JSON.parse(localStorage.getItem('messages'))||[{
+                message:'hello chatbot',
+                sender: 'user',
+                id:'id1'
+            }]);
             useEffect(()=>{
                 Chatbot.addResponses({
                     "i love you":"i love you too ,it means alot to me,Thank you",
                     "youtube":youtube
                 })
             })
-            return(                                                                                       
+            useEffect(()=>{
+                localStorage.setItem('messages',JSON.stringify(chatMessages))
+            })
+            return(                             
             <div className="max-w-xl mx-auto h-dvh flex flex-col ">
             {chatMessages.length===0&&(
                 <p className="text-center">Welcome to the chatbot project! send a message using the textbox below.</p>
