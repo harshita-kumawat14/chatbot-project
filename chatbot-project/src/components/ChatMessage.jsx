@@ -1,6 +1,8 @@
+import dayjs from 'dayjs';
 import RobotProfile from '../assets/robot1.webp';
 import UserProfile from '../assets/user1.png';
-export function ChatMessage({message,sender}){
+
+export function ChatMessage({message,sender,time}){
             // const message=props.message;
             // let sender=props.sender;
             // let {message,sender}=props;
@@ -23,11 +25,14 @@ export function ChatMessage({message,sender}){
             //         );
             //     }
             return(
-                <div className={(sender==='user')?' flex justify-end  mt-4':' flex justify-start mb-1.5 '}> 
-               {sender==='robot' && <img className="inline-block max-w-12 max-h-12" src={RobotProfile} />}
+                <div className={(sender==='user')?' flex justify-end  mt-4 mb-2':' flex justify-start mb-1.5'}> 
+               {sender==='robot' && <img className="inline-block max-w-12 max-h-12 " src={RobotProfile} />}
                <div className="bg-gray-200 px-3.5 py-3 rounded-xl mx-1.5 max-w-80 ">
                 {message}
+                {/* {<div className="">{time}</div>} */}
+                <div className="text-[14px] text-gray-500">{dayjs(time).format('h:mma')}</div>
                 </div>
+               
                 {sender=='user'&& <img className="inline-block mr-3.5  max-w-12 max-h-12" src={UserProfile} height="50" width="50" />}
                 
                 </div>
